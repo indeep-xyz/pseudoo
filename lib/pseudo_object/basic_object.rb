@@ -5,9 +5,11 @@ module PseudoObject
 
     PSEUDO_CLASS = ::BasicObject
     PSEUDO_INSTANCE_METHODS = %i/
+    pseudo?
+    pseudo_influence=
+    pseudo_influence?
     pseudo_object
     pseudo_object=
-    pseudo?
     /
 
     # - - - - - - - - - - - - - - -
@@ -25,20 +27,32 @@ module PseudoObject
     # - - - - - - - - - - - - - - -
     # initialize
 
-    def initialize(source)
-      self.pseudo_object = source
+    def initialize(
+        object,
+        influence: true
+        )
+      self.pseudo_object = object
+      self.pseudo_influence = influence
     end
 
     # - - - - - - - - - - - - - - -
     # setter, bool
+
+    def pseudo?
+      true
+    end
 
     def pseudo_object=(other)
       validate_class(other)
       @pseudo_object = other
     end
 
-    def pseudo?
-      true
+    def pseudo_influence?
+      @pseudo_influence
+    end
+
+    def pseudo_influence=(bool)
+      @pseudo_influence = !!bool
     end
 
     # - - - - - - - - - - - - - - -
@@ -49,9 +63,9 @@ module PseudoObject
     end
     private :method_missing
 
-    def validate_class(source)
-      unless source.kind_of?(PSEUDO_CLASS)
-        fail TypeError.new(source)
+    def validate_class(object)
+      unless object.kind_of?(PSEUDO_CLASS)
+        fail TypeError.new(object)
       end
     end
     private :validate_class
