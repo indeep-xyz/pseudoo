@@ -6,8 +6,8 @@ module PseudoObject
     PSEUDO_CLASS = ::BasicObject
     PSEUDO_INSTANCE_METHODS = %i/
     pseudo?
-    pseudo_influence=
-    pseudo_influence?
+    pseudo_infection=
+    pseudo_infection?
     pseudo_object
     pseudo_object=
     /
@@ -29,10 +29,10 @@ module PseudoObject
 
     def initialize(
         object,
-        influence: true
+        infection: true
         )
       self.pseudo_object = object
-      self.pseudo_influence = influence
+      self.pseudo_infection = infection
     end
 
     # - - - - - - - - - - - - - - -
@@ -47,12 +47,12 @@ module PseudoObject
       @pseudo_object = other
     end
 
-    def pseudo_influence?
-      @pseudo_influence
+    def pseudo_infection?
+      @pseudo_infection
     end
 
-    def pseudo_influence=(bool)
-      @pseudo_influence = !!bool
+    def pseudo_infection=(bool)
+      @pseudo_infection = !!bool
     end
 
     # - - - - - - - - - - - - - - -
