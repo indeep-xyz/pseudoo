@@ -13,3 +13,11 @@ def pure_instance_methods(cls)
     rspec_methods.include?(method)
   end
 end
+
+def require_examples(suffixes, prefix = 'model/')
+  root = "spec_helper/example/#{prefix}"
+
+  suffixes.each do |suffix|
+    require "#{root}#{suffix}"
+  end
+end

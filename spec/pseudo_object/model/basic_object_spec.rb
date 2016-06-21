@@ -1,12 +1,14 @@
-require 'pseudo_object/basic_object'
-
+require 'pseudo_object/model/basic_object'
 require 'spec_helper'
-require 'spec_helper/example/_common/class_methods/creating_an_instance'
-require 'spec_helper/example/_common/class_methods/having_instance_methods_correctly'
-require 'spec_helper/example/_common/instance_methods/not_being'
-require 'spec_helper/example/basic_object/instance_methods/not_overridden'
-require 'spec_helper/example/basic_object/instance_methods/overridden'
-require 'spec_helper/example/basic_object/instance_methods/own'
+
+require_examples %w!
+_common/class_methods/creating_an_instance
+_common/class_methods/having_instance_methods_correctly
+_common/instance_methods/not_being
+basic_object/instance_methods/not_overridden
+basic_object/instance_methods/overridden
+basic_object/instance_methods/own
+!
 
 describe ::PseudoObject::BasicObject do
   describe 'class methods' do
