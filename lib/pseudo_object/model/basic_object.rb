@@ -4,25 +4,28 @@ module PseudoObject
         :pseudo_object
 
     @@pseudo_class = ::BasicObject
-    @@pseudo_public_instance_methods = %i/
-    pseudo?
-    pseudo_infection=
-    pseudo_infection?
-    pseudo_object
-    pseudo_object=
-    /
-    @@pseudo_instance_methods = \
-        @@pseudo_public_instance_methods | %i/
-    /
 
     class << self
       %w/
       pseudo_class
-      pseudo_instance_methods
-      pseudo_public_instance_methods
       /.each do |method_name|
         define_method(method_name) do
           class_variable_get(:"@@#{method_name}")
+        end
+      end
+
+      %w/
+      instance_methods
+      methods
+      private_instance_methods
+      protected_instance_methods
+      public_instance_methods
+      /.each do |method_name|
+        pseudo_method_name = 'pseudo_%s' % method_name
+
+        define_method(pseudo_method_name) do
+          __send__(method_name) \
+              - superclass.__send__(method_name)
         end
       end
 
