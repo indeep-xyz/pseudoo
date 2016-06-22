@@ -3,14 +3,43 @@ module PseudoObject
     attr_reader \
         :pseudo_object
 
-    PSEUDO_CLASS = ::BasicObject
-    PSEUDO_INSTANCE_METHODS = %i/
+    @@pseudo_class = ::BasicObject
+    @@pseudo_public_instance_methods = %i/
     pseudo?
     pseudo_infection=
     pseudo_infection?
     pseudo_object
     pseudo_object=
     /
+    @@pseudo_instance_methods = \
+        @@pseudo_public_instance_methods | %i/
+    /
+
+    class << self
+      %w/
+      pseudo_class
+      pseudo_instance_methods
+      pseudo_public_instance_methods
+      /.each do |method_name|
+        define_method(method_name) do
+          class_variable_get(:"@@#{method_name}")
+        end
+      end
+
+      def pseudo_superclass
+        nil
+      end
+
+      def instance_methods_pseudized
+        instance_methods \
+            | @@pseudo_class.instance_methods
+      end
+
+      def public_instance_methods_pseudized
+        public_instance_methods \
+            | @@pseudo_class.public_instance_methods
+      end
+    end
 
     # - - - - - - - - - - - - - - -
     # error
@@ -64,7 +93,7 @@ module PseudoObject
     private :method_missing
 
     def validate_class(object)
-      unless object.kind_of?(PSEUDO_CLASS)
+      unless object.kind_of?(@@pseudo_class)
         fail TypeError.new(object)
       end
     end
@@ -74,7 +103,7 @@ module PseudoObject
     # pseudo - compare
 
     def ==(other)
-      if other.kind_of?(PSEUDO_CLASS) \
+      if other.kind_of?(@@pseudo_class) \
           && other == @pseudo_object
         return true
       end
