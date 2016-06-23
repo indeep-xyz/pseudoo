@@ -1,37 +1,34 @@
 RSpec.shared_examples 'valid pseudo methods' do
-  describe '.instance_methods_pseudized' do
-    subject { described_class.instance_methods_pseudized }
+  # - - - - - - - - - - - - - - - - - - - -
+  # .pseudized_* series
 
-    it 'should return an array' do
-      is_expected.to \
-          be_a_kind_of(::Array)
-    end
+  %w/
+  instance_methods
+  methods
+  private_instance_methods
+  protected_instance_methods
+  public_instance_methods
+  /.each do |method_name|
+    pseudized_method_name = "pseudized_#{method_name}"
+    pseudo_method_name = "pseudo_#{method_name}"
+    it_text = 'should return an array including %s and the model class\'s' % [
+        pseudo_method_name.gsub(/_/, ' ')]
 
-    it 'should return instance methods including the original class\'s them' do
-      original = described_class.pseudo_class.instance_methods
-      addition = described_class.pseudo_instance_methods
+    describe ".#{pseudized_method_name}" do
+      subject { described_class.__send__(pseudized_method_name) }
 
-      is_expected.to \
-          match_array(original | addition)
-    end
-  end
-
-  describe '.public_instance_methods_pseudized' do
-    subject { described_class.public_instance_methods_pseudized }
-
-    it 'should return an array' do
-      is_expected.to \
-          be_a_kind_of(::Array)
-    end
-
-    it 'should return public instance methods including the original class\'s them' do
-      original = described_class::pseudo_class.public_instance_methods
-      addition = described_class::pseudo_public_instance_methods
+    it it_text do
+      original = described_class.pseudo_class.__send__(method_name)
+      addition = described_class.__send__(pseudo_method_name)
 
       is_expected.to \
           match_array(original | addition)
+      end
     end
   end
+
+  # - - - - - - - - - - - - - - - - - - - -
+  # .pseudo_* series
 
   describe '.pseudo_instance_methods' do
     subject { described_class.pseudo_instance_methods }

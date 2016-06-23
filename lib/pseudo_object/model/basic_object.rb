@@ -5,6 +5,8 @@ module PseudoObject
 
     @@pseudo_class = ::BasicObject
 
+
+
     class << self
       %w/
       pseudo_class
@@ -21,8 +23,21 @@ module PseudoObject
       protected_instance_methods
       public_instance_methods
       /.each do |method_name|
+        pseudized_method_name = 'pseudized_%s' % method_name
         pseudo_method_name = 'pseudo_%s' % method_name
 
+        # .pseudized_* series
+        #
+        # Return an array including the names of methods
+        # defined in PseudoObject and in the model.
+        define_method(pseudized_method_name) do
+          __send__(pseudo_method_name) \
+              | @@pseudo_class.__send__(method_name)
+        end
+
+        # .pseudo_* series
+        #
+        # Return the names of methods defined in PseudoObject.
         define_method(pseudo_method_name) do
           __send__(method_name) \
               - superclass.__send__(method_name)
@@ -31,16 +46,6 @@ module PseudoObject
 
       def pseudo_superclass
         nil
-      end
-
-      def instance_methods_pseudized
-        instance_methods \
-            | @@pseudo_class.instance_methods
-      end
-
-      def public_instance_methods_pseudized
-        public_instance_methods \
-            | @@pseudo_class.public_instance_methods
       end
     end
 
