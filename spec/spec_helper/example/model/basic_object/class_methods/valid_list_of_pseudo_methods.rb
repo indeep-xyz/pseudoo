@@ -1,4 +1,4 @@
-RSpec.shared_examples 'valid pseudo methods' do
+RSpec.shared_examples 'valid list of pseudo methods' do
   # - - - - - - - - - - - - - - - - - - - -
   # .pseudized_* series
 
