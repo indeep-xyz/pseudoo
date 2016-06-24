@@ -1,3 +1,5 @@
+require_relative 'ext/definer/pseudo_method_list'
+
 module PseudoObject
   class BasicObject < ::BasicObject
     attr_reader \
@@ -5,42 +7,14 @@ module PseudoObject
 
     @@pseudo_class = ::BasicObject
 
-
-
     class << self
+      ModelExt::Definer::PseudoMethodList.define_methods(self)
+
       %w/
       pseudo_class
       /.each do |method_name|
         define_method(method_name) do
           class_variable_get(:"@@#{method_name}")
-        end
-      end
-
-      %w/
-      instance_methods
-      methods
-      private_instance_methods
-      protected_instance_methods
-      public_instance_methods
-      /.each do |method_name|
-        pseudized_method_name = 'pseudized_%s' % method_name
-        pseudo_method_name = 'pseudo_%s' % method_name
-
-        # .pseudized_* series
-        #
-        # Return an array including the names of methods
-        # defined in PseudoObject and in the model.
-        define_method(pseudized_method_name) do
-          __send__(pseudo_method_name) \
-              | @@pseudo_class.__send__(method_name)
-        end
-
-        # .pseudo_* series
-        #
-        # Return the names of methods defined in PseudoObject.
-        define_method(pseudo_method_name) do
-          __send__(method_name) \
-              - superclass.__send__(method_name)
         end
       end
 
