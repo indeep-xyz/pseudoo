@@ -5,7 +5,7 @@ RSpec.shared_examples 'valid list of pseudo methods' do
   describe '.pseudized_instance_methods' do
     subject { described_class.pseudized_instance_methods }
 
-    it 'should return an array including instance methods' do
+    it 'should return an array including instance methods overridden' do
       is_expected.to \
           include(:==, :!=, :!)
       is_expected.not_to \

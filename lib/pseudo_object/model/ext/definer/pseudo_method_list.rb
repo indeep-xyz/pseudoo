@@ -15,7 +15,7 @@ module PseudoObject
           def define_methods(cls)
             instance = new(cls)
 
-            instance.define_methods
+            instance.define_pseudo_methods
             instance.define_pseudized_methods
           end
         end
@@ -24,7 +24,7 @@ module PseudoObject
           @class = cls
         end
 
-        def define_methods
+        def define_pseudo_methods
           METHOD_TYPES.each do |type|
             define_pseudo_method(type)
           end
@@ -67,8 +67,8 @@ module PseudoObject
         def define_pseudo_method(m)
           @class.class_eval <<-EOT
             define_method('#{pseudo_method_name(m)}') do
-              ancestors.inject([]) do |collection, ancestor|
-                collection |= ancestor.#{m}
+              ancestors[0..-2].inject([]) do |result, cls|
+                result |= cls.#{m}
               end - pseudo_class.#{m}
             end
           EOT
