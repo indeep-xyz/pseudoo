@@ -43,7 +43,7 @@ RSpec.shared_examples 'valid list of pseudo methods' do
 
     it 'should return an array including valid private instance methods' do
       is_expected.to \
-          include(:validate_class)
+          include(:validate_pseudo_class)
       is_expected.not_to \
           include()
     end

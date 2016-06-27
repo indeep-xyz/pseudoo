@@ -38,7 +38,7 @@ module PseudoObject
     }
 
     # - - - - - - - - - - - - - - -
-    # initialize
+    # override - initialize
 
     def initialize(
         object,
@@ -49,42 +49,40 @@ module PseudoObject
     end
 
     # - - - - - - - - - - - - - - -
-    # setter, bool
+    # pseudo original - set
 
-    def pseudo?
-      true
+    def pseudo_infection=(bool)
+      @pseudo_infection = !!bool
     end
 
     def pseudo_object=(other)
-      validate_class(other)
+      validate_pseudo_class(other)
       @pseudo_object = other
+    end
+
+    # - - - - - - - - - - - - - - -
+    # pseudo original - get - bool
+
+    def pseudo?
+      true
     end
 
     def pseudo_infection?
       @pseudo_infection
     end
 
-    def pseudo_infection=(bool)
-      @pseudo_infection = !!bool
-    end
-
     # - - - - - - - - - - - - - - -
-    # private - validate
+    # pseudo original - private - validate
 
-    def method_missing(method_name, *args, &block)
-      @pseudo_object.__send__(method_name, *args, &block)
-    end
-    private :method_missing
-
-    def validate_class(object)
+    def validate_pseudo_class(object)
       unless object.kind_of?(@@pseudo_model)
         fail TypeError.new(object)
       end
     end
-    private :validate_class
+    private :validate_pseudo_class
 
     # - - - - - - - - - - - - - - -
-    # pseudo - compare
+    # override - compare
 
     def ==(other)
       __id__ == other.__id__ \
@@ -96,10 +94,18 @@ module PseudoObject
     end
 
     # - - - - - - - - - - - - - - -
-    # pseudo - other
+    # override - convert
 
     def !
       !@pseudo_object
     end
+
+    # - - - - - - - - - - - - - - -
+    # override - private - other
+
+    def method_missing(method_name, *args, &block)
+      @pseudo_object.__send__(method_name, *args, &block)
+    end
+    private :method_missing
   end
 end
