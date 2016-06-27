@@ -85,12 +85,8 @@ module PseudoObject
     # pseudo - compare
 
     def ==(other)
-      if other.kind_of?(@@pseudo_class) \
-          && other == @pseudo_object
-        return true
-      end
-
-      false
+      __id__ == other.__id__ \
+          || @pseudo_object.__id__ == other.__id__
     end
 
     def !=(other)

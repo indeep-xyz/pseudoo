@@ -35,14 +35,18 @@ RSpec.shared_examples 'not overridden instance methods of BasicObaject' do
       context banner do
         let(:value) { object }
 
-        it 'should return true for the same value' do
-          expect(subject.equal?(subject)).to \
-              be_truthy
+        context 'when passed the same object as the receiver' do
+          it 'should return true' do
+            expect(subject.equal?(subject)).to \
+                be_truthy
+          end
         end
 
-        it 'should return false for the different value' do
-          expect(subject.equal?(value)).to \
-              be_falsey
+        context 'when passed the object mimicked by the receiver' do
+          it 'should return false' do
+            expect(subject.equal?(value)).to \
+                be_falsey
+          end
         end
       end
     end
