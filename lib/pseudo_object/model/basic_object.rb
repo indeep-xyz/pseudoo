@@ -5,13 +5,15 @@ module PseudoObject
     attr_reader \
         :pseudo_object
 
-    @@pseudo_class = ::BasicObject
+    @@pseudo_substance = self
+    @@pseudo_model = ::BasicObject
 
     class << self
       ModelExt::Definer::PseudoMethodList.define_methods(self)
 
       %w/
-      pseudo_class
+      pseudo_substance
+      pseudo_model
       /.each do |method_name|
         define_method(method_name) do
           class_variable_get(:"@@#{method_name}")
@@ -30,7 +32,7 @@ module PseudoObject
       def initialize(object)
         message = '%s is not a kind of %s class' % [
             object.class,
-            PSEUDO_CLASS.name]
+            @@pseudo_model.name]
         super(message)
       end
     }
@@ -75,7 +77,7 @@ module PseudoObject
     private :method_missing
 
     def validate_class(object)
-      unless object.kind_of?(@@pseudo_class)
+      unless object.kind_of?(@@pseudo_model)
         fail TypeError.new(object)
       end
     end

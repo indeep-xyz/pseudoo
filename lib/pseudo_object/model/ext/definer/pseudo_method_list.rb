@@ -50,7 +50,7 @@ module PseudoObject
             define_method('#{pseudized_method_name(m)}') do
               collection = ancestors[0..-2].inject([]) do |result, cls|
                 result |= cls.#{m}
-              end & pseudo_class.#{m}
+              end & pseudo_model.#{m}
 
               head_of_commons = collection.index(:instance_eval)
               collection[0...head_of_commons]
@@ -69,7 +69,7 @@ module PseudoObject
             define_method('#{pseudo_method_name(m)}') do
               ancestors[0..-2].inject([]) do |result, cls|
                 result |= cls.#{m}
-              end - pseudo_class.#{m}
+              end - pseudo_model.#{m}
             end
           EOT
         end
