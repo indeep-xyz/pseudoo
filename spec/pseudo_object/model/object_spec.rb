@@ -18,6 +18,7 @@ describe ::PseudoObject::Object do
   end
 
   describe 'instance methods' do
+    it_behaves_like 'instance methods not being'
     it_behaves_like 'own instance methods of BasicObaject'
     it_behaves_like 'overridden instance methods of BasicObaject'
     it_behaves_like 'not overridden instance methods of BasicObaject'
