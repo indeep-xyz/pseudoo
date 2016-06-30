@@ -1,4 +1,5 @@
-RSpec.shared_examples 'valid list of pseudo methods' do
+RSpec.shared_examples \
+    'in BasicObaject, listing pseudo methods' do
   # - - - - - - - - - - - - - - - - - - - -
   # .pseudized_* series
 

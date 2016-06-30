@@ -1,4 +1,5 @@
-RSpec.shared_examples 'creating an instance' do
+RSpec.shared_examples \
+    'creating an instance' do
   describe '.new' do
     Contextant.in(%w/all/) \
         do |object, banner|

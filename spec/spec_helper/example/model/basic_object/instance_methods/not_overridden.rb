@@ -1,4 +1,5 @@
-RSpec.shared_examples 'not overridden instance methods of BasicObaject' do
+RSpec.shared_examples \
+    'in BasicObaject, not overridden instance methods' do
   subject { described_class.new(value) }
 
   describe '#__id__' do

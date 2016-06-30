@@ -1,4 +1,5 @@
-RSpec.shared_examples 'own instance methods of BasicObaject' do
+RSpec.shared_examples \
+    'in BasicObaject, own instance methods' do
   subject { described_class.new(value) }
 
   describe '#pseudo?' do

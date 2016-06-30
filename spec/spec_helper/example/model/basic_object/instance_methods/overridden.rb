@@ -1,4 +1,5 @@
-RSpec.shared_examples 'overridden instance methods of BasicObaject' do
+RSpec.shared_examples \
+    'in BasicObaject, overridden instance methods' do
   subject { described_class.new(value) }
 
   describe '#==' do

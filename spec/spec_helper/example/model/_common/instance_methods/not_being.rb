@@ -1,4 +1,5 @@
-RSpec.shared_examples 'instance methods not being' do
+RSpec.shared_examples \
+    'instance methods not being' do
   subject { described_class.new(value) }
 
   describe '#__instance_method_not_being__' do

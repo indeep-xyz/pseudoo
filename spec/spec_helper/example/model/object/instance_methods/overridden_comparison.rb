@@ -1,4 +1,5 @@
-RSpec.shared_examples 'overridden comparison instance methods of Object' do
+RSpec.shared_examples \
+    'in Object, overridden comparison instance methods' do
   subject { described_class.new(value) }
 
   describe '#kind_of?' do
