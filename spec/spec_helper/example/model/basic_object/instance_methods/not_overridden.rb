@@ -1,8 +1,9 @@
 RSpec.shared_examples \
     'in BasicObaject, not overridden instance methods' do
-  subject { described_class.new(value) }
 
   describe '#__id__' do
+    subject { described_class.wrap(value) }
+
     Contextant.in(%w/fixnum string/) \
         do |object, banner|
       context banner do
@@ -17,6 +18,8 @@ RSpec.shared_examples \
   end
 
   describe '#__send__' do
+    subject { described_class.wrap(value) }
+
     Contextant.in(%w/fixnum string/) \
         do |object, banner|
       context banner do
@@ -31,6 +34,8 @@ RSpec.shared_examples \
   end
 
   describe '#equal?' do
+    subject { described_class.wrap(value) }
+
     Contextant.in(%w/fixnum string/) \
         do |object, banner|
       context banner do

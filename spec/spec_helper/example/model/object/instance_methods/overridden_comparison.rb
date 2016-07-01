@@ -1,8 +1,9 @@
 RSpec.shared_examples \
     'in Object, overridden comparison instance methods' do
-  subject { described_class.new(value) }
 
   describe '#kind_of?' do
+    subject { described_class.wrap(value) }
+
     Contextant.in(%w/all/) \
         do |object, banner|
       context banner do
@@ -18,7 +19,7 @@ RSpec.shared_examples \
     end
 
     context 'has an instance of the described class' do
-      let(:value) { described_class.new(nil) }
+      let(:value) { described_class.wrap(nil) }
 
       context 'when passed the class of the receiver\'s root' do
         it 'should return true' do
@@ -37,6 +38,8 @@ RSpec.shared_examples \
   end
 
   describe '#instance_of?' do
+    subject { described_class.wrap(value) }
+
     Contextant.in(%w/all/) \
         do |object, banner|
       context banner do

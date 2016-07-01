@@ -23,6 +23,10 @@ module PseudoObject
       def pseudo_superclass
         nil
       end
+
+      def wrap(object, **options)
+        new(object, wrap: true, **options)
+      end
     end
 
     # - - - - - - - - - - - - - - -
@@ -42,7 +46,8 @@ module PseudoObject
 
     def initialize(
         object,
-        infection: true
+        infection: true,
+        wrap: false
         )
       self.pseudo_object = object
       self.pseudo_infection = infection
@@ -68,7 +73,7 @@ module PseudoObject
     end
 
     def pseudo_infection?
-      @pseudo_infection
+      !!@pseudo_infection
     end
 
     # - - - - - - - - - - - - - - -

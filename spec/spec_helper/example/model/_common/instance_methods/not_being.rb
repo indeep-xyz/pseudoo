@@ -1,6 +1,6 @@
 RSpec.shared_examples \
     'instance methods not being' do
-  subject { described_class.new(value) }
+  subject { described_class.wrap(value) }
 
   describe '#__instance_method_not_being__' do
     Contextant.in(%w/fixnum string/) \

@@ -1,8 +1,9 @@
 RSpec.shared_examples \
     'in BasicObaject, overridden instance methods' do
-  subject { described_class.new(value) }
 
   describe '#==' do
+    subject { described_class.wrap(value) }
+
     Contextant.in(%w/all/) \
         do |object, banner|
       context banner do
@@ -26,6 +27,8 @@ RSpec.shared_examples \
   end
 
   describe '#!=' do
+    subject { described_class.wrap(value) }
+
     Contextant.in(%w/fixnum string bool nil/) \
         do |object, banner|
       context banner do
@@ -49,6 +52,8 @@ RSpec.shared_examples \
   end
 
   describe '#!' do
+    subject { described_class.wrap(value) }
+
     Contextant.in(%w/all/) \
         do |object, banner|
       context banner do

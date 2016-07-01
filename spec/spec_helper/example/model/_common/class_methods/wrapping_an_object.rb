@@ -1,11 +1,11 @@
 RSpec.shared_examples \
-    'creating an instance' do
-  describe '.new' do
+    'wrapping an object' do
+  describe '.wrap' do
     Contextant.in(%w/all/) \
         do |object, banner|
       context banner do
         let(:source) { object }
-        subject { described_class.new(source) }
+        subject { described_class.wrap(source) }
 
         it 'should create an instance' do
           expect { subject }.not_to \
