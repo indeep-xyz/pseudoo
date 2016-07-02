@@ -25,7 +25,7 @@ module PseudoObject
       end
 
       def wrap(object, **options)
-        new(object, wrap: true, **options)
+        allocate.pseudo_wrap(object, **options)
       end
     end
 
@@ -43,15 +43,26 @@ module PseudoObject
 
     # - - - - - - - - - - - - - - -
     # override - initialize
+    # pseudo original - wrap
 
-    def initialize(
-        object,
-        infection: true,
-        wrap: false
-        )
+    def initialize(source, **options)
+      self.pseudo_object = source
+      pseudo_initialize_options(**options)
+    end
+
+    def pseudo_wrap(object, **options)
       self.pseudo_object = object
+      pseudo_initialize_options(**options)
+
+      self
+    end
+
+    def pseudo_initialize_options(
+        infection: true
+        )
       self.pseudo_infection = infection
     end
+    private :pseudo_initialize_options
 
     # - - - - - - - - - - - - - - -
     # pseudo original - set
