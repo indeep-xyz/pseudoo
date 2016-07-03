@@ -23,10 +23,6 @@ module PseudoObject
       def pseudo_superclass
         nil
       end
-
-      def wrap(object, **options)
-        allocate.pseudo_wrap(object, **options)
-      end
     end
 
     # - - - - - - - - - - - - - - -
@@ -43,18 +39,10 @@ module PseudoObject
 
     # - - - - - - - - - - - - - - -
     # override - initialize
-    # pseudo original - wrap
 
     def initialize(**options)
       self.pseudo_object = @@pseudo_model.new
       pseudo_initialize_options(**options)
-    end
-
-    def pseudo_wrap(object, **options)
-      self.pseudo_object = object
-      pseudo_initialize_options(**options)
-
-      self
     end
 
     def pseudo_initialize_options(
