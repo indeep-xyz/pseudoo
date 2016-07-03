@@ -8,6 +8,7 @@ basic_object/class_methods/listing_pseudo_methods
 basic_object/instance_methods/not_overridden
 basic_object/instance_methods/overridden
 basic_object/instance_methods/own
+object/class_methods/new
 object/instance_methods/overridden_comparison
 !
 
@@ -15,6 +16,7 @@ describe ::PseudoObject::Object do
   describe 'class methods' do
     it_behaves_like 'wrapping an object'
     it_behaves_like 'in BasicObaject, listing pseudo methods'
+    it_behaves_like 'in Object, creating a new instance'
   end
 
   describe 'instance methods' do

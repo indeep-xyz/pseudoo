@@ -45,8 +45,8 @@ module PseudoObject
     # override - initialize
     # pseudo original - wrap
 
-    def initialize(source, **options)
-      self.pseudo_object = source
+    def initialize(**options)
+      self.pseudo_object = @@pseudo_model.new
       pseudo_initialize_options(**options)
     end
 
