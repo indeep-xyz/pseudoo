@@ -1,7 +1,7 @@
 RSpec.shared_examples \
     'in BasicObject, own instance methods' do
   describe '#pseudo?' do
-    subject { described_class.wrap(value) }
+    subject { described_class.new }
 
     Contextant.in(%w/fixnum/) \
         do |object, banner|
@@ -17,10 +17,10 @@ RSpec.shared_examples \
   end
 
   describe '#pseudo_infection?' do
-    subject { described_class.wrap(nil, infection: bool) }
+    subject { described_class.new(infection: bool) }
 
     context 'when initialized no option for @pseudo_infection' do
-      subject { described_class.wrap(nil) }
+      subject { described_class.new }
 
       it 'should return true' do
         expect(subject.pseudo_infection?).to \
@@ -48,7 +48,7 @@ RSpec.shared_examples \
   end
 
   describe '#pseudo_infection=' do
-    subject { described_class.wrap(nil, infection: bool) }
+    subject { described_class.new(infection: bool) }
 
     context 'when initialized @pseudo_infection to true' do
       let(:bool) { true }

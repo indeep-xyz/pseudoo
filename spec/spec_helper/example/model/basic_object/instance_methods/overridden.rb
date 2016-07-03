@@ -2,68 +2,65 @@ RSpec.shared_examples \
     'in BasicObject, overridden instance methods' do
 
   describe '#==' do
-    subject { described_class.wrap(value) }
+    subject { described_class.new }
 
-    Contextant.in(%w/all/) \
-        do |object, banner|
-      context banner do
-        let(:value) { object }
+    context 'when passed the same object as the receiver' do
+      it 'should return true' do
+        expect(subject == subject).to \
+            be_truthy
+      end
+    end
 
-        context 'when passed the same object as the receiver' do
-          it 'should return true' do
-            expect(subject == subject).to \
-                be_truthy
-          end
-        end
+    context 'when passed an object the receiver has' do
+      it 'should return true' do
+        expect(subject == subject.pseudo_object).to \
+            be_truthy
+      end
+    end
 
-        context 'when passed the object mimicked by the receiver' do
-          it 'should return true' do
-            expect(subject == value).to \
-                be_truthy
-          end
-        end
+    context 'when passed an instance of ::BasicObject' do
+      let(:value) { ::BasicObject.new }
+
+      it 'should return false' do
+        expect(subject == value).to \
+            be_falsey
       end
     end
   end
 
   describe '#!=' do
-    subject { described_class.wrap(value) }
+    subject { described_class.new }
 
-    Contextant.in(%w/fixnum string bool nil/) \
-        do |object, banner|
-      context banner do
-        let(:value) { object }
+    context 'when passed the same object as the receiver' do
+      it 'should return false' do
+        expect(subject != subject).to \
+            be_falsey
+      end
+    end
 
-        context 'when passed the same object as the receiver' do
-          it 'should return false' do
-            expect(subject != subject).to \
-                be_falsey
-          end
-        end
+    context 'when passed an object the receiver has' do
+      it 'should return false' do
+        expect(subject != subject.pseudo_object).to \
+            be_falsey
+      end
+    end
 
-        context 'when passed the object mimicked by the receiver' do
-          it 'should return false' do
-            expect(subject != value).to \
-                be_falsey
-          end
-        end
+    context 'when passed an instance of ::BasicObject' do
+      let(:value) { ::BasicObject.new }
+
+      it 'should return true' do
+        expect(subject != value).to \
+            be_truthy
       end
     end
   end
 
   describe '#!' do
-    subject { described_class.wrap(value) }
+    subject { described_class.new }
 
-    Contextant.in(%w/all/) \
-        do |object, banner|
-      context banner do
-        let(:value) { object }
-
-        it 'should return the same as the returner of original object' do
-          expect(!subject).to \
-              eq(!value)
-        end
-      end
+    it 'should return false' do
+      expect(!subject).to \
+          be_falsey
     end
   end
 end
