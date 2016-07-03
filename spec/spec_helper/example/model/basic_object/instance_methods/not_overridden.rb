@@ -1,5 +1,5 @@
 RSpec.shared_examples \
-    'in BasicObaject, not overridden instance methods' do
+    'in BasicObject, not overridden instance methods' do
 
   describe '#__id__' do
     subject { described_class.wrap(value) }

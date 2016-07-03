@@ -1,5 +1,5 @@
 RSpec.shared_examples \
-    'in BasicObaject, overridden instance methods' do
+    'in BasicObject, overridden instance methods' do
 
   describe '#==' do
     subject { described_class.wrap(value) }

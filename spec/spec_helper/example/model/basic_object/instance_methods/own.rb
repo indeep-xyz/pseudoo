@@ -1,5 +1,5 @@
 RSpec.shared_examples \
-    'in BasicObaject, own instance methods' do
+    'in BasicObject, own instance methods' do
   describe '#pseudo?' do
     subject { described_class.wrap(value) }
 

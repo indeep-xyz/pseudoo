@@ -15,15 +15,15 @@ object/instance_methods/overridden_comparison
 describe ::PseudoObject::Object do
   describe 'class methods' do
     it_behaves_like 'wrapping an object'
-    it_behaves_like 'in BasicObaject, listing pseudo methods'
+    it_behaves_like 'in BasicObject, listing pseudo methods'
     it_behaves_like 'in Object, creating a new instance'
   end
 
   describe 'instance methods' do
     it_behaves_like 'instance methods not being'
-    it_behaves_like 'in BasicObaject, own instance methods'
-    it_behaves_like 'in BasicObaject, overridden instance methods'
-    it_behaves_like 'in BasicObaject, not overridden instance methods'
+    it_behaves_like 'in BasicObject, own instance methods'
+    it_behaves_like 'in BasicObject, overridden instance methods'
+    it_behaves_like 'in BasicObject, not overridden instance methods'
     it_behaves_like 'in Object, overridden comparison instance methods'
   end
 end

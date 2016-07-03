@@ -15,13 +15,13 @@ describe ::PseudoObject::BasicObject do
   describe 'class methods' do
     it_behaves_like 'wrapping an object'
     it_behaves_like 'in BasicObject, creating a new instance'
-    it_behaves_like 'in BasicObaject, listing pseudo methods'
+    it_behaves_like 'in BasicObject, listing pseudo methods'
   end
 
   describe 'instance methods' do
     it_behaves_like 'instance methods not being'
-    it_behaves_like 'in BasicObaject, own instance methods'
-    it_behaves_like 'in BasicObaject, overridden instance methods'
-    it_behaves_like 'in BasicObaject, not overridden instance methods'
+    it_behaves_like 'in BasicObject, own instance methods'
+    it_behaves_like 'in BasicObject, overridden instance methods'
+    it_behaves_like 'in BasicObject, not overridden instance methods'
   end
 end

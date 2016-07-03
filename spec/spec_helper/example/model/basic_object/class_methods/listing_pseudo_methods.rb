@@ -1,5 +1,5 @@
 RSpec.shared_examples \
-    'in BasicObaject, listing pseudo methods' do
+    'in BasicObject, listing pseudo methods' do
   # - - - - - - - - - - - - - - - - - - - -
   # .pseudized_* series
 
