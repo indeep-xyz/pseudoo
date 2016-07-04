@@ -72,7 +72,7 @@ module PseudoObject
     end
 
     def pseudo_infection?
-      !!@pseudo_infection
+      @pseudo_infection
     end
 
     # - - - - - - - - - - - - - - -
