@@ -1,6 +1,6 @@
 require_relative 'basic_object'
 
-module PseudoObject
+module Pseudoo
   class Object < BasicObject
     @@pseudo_substance = self
     @@pseudo_model = ::Object

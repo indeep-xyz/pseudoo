@@ -1,6 +1,6 @@
 require_relative 'ext/definer/pseudo_method_list'
 
-module PseudoObject
+module Pseudoo
   class BasicObject < ::BasicObject
     attr_reader \
         :pseudo_object

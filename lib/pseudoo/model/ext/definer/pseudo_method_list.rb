@@ -1,4 +1,4 @@
-module PseudoObject
+module Pseudoo
   module ModelExt
     module Definer
       class PseudoMethodList
@@ -61,7 +61,7 @@ module PseudoObject
         # Define the class method of "pseudo_*" series
         #
         # It returns an array including the names of methods
-        # defined in PseudoObject.
+        # defined in Pseudoo.
         #
         # @m [String] method name of the method to list methods
         def define_pseudo_method(m)

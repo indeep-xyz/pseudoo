@@ -22,7 +22,7 @@ RSpec.shared_examples \
 
     context 'when passed the class of the receiver\'s root' do
       it 'should return true' do
-        expect(subject.kind_of?(::PseudoObject::BasicObject)).to \
+        expect(subject.kind_of?(::Pseudoo::BasicObject)).to \
             be_truthy
       end
     end
@@ -49,7 +49,7 @@ RSpec.shared_examples \
 
     context 'when passed the class of the receiver\'s root' do
       it 'should return false' do
-        expect(subject.instance_of?(::PseudoObject::BasicObject)).to \
+        expect(subject.instance_of?(::Pseudoo::BasicObject)).to \
             be_falsey
       end
     end

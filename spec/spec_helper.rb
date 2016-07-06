@@ -1,6 +1,6 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 $LOAD_PATH.unshift File.expand_path('../lib', __FILE__)
-require 'pseudo_object'
+require 'pseudoo'
 require 'spec_helper/contextant'
 
 def pure_instance_methods(cls)

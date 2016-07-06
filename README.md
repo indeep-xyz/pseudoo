@@ -1,7 +1,7 @@
-PseudoObject
+Pseudoo
 ====
 
-[![Gem Version](https://badge.fury.io/rb/pseudo_object.svg)](https://badge.fury.io/rb/pseudo_object)
+[![Gem Version](https://badge.fury.io/rb/pseudoo.svg)](https://badge.fury.io/rb/pseudoo)
 
 Installation
 ----
@@ -9,7 +9,7 @@ Installation
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'pseudo_object'
+gem 'pseudoo'
 ```
 
 And then execute:
@@ -18,7 +18,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install pseudo_object
+    $ gem install pseudoo
 
 Usage
 ----
@@ -28,7 +28,7 @@ TODO: Write usage instructions here
 Contributing
 ----
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/indeep-xyz/pseudo-object.
+Bug reports and pull requests are welcome on GitHub at https://github.com/indeep-xyz/pseudoo.
 
 
 License

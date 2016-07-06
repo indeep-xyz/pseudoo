@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe PseudoObject do
+describe Pseudoo do
   it 'has a version number' do
-    expect(PseudoObject::VERSION).not_to \
+    expect(Pseudoo::VERSION).not_to \
         be(nil)
   end
 end

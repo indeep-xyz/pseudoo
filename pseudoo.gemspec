@@ -1,17 +1,17 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'pseudo_object/version'
+require 'pseudoo/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "pseudo_object"
-  spec.version       = PseudoObject::VERSION
+  spec.name          = "pseudoo"
+  spec.version       = Pseudoo::VERSION
   spec.authors       = ["indeep-xyz"]
   spec.email         = ["indeep.xyz@gmail.com"]
 
   spec.summary       = %q{Pseudo class objects of standard library in Ruby.}
   spec.description   = %q{Pseudo class objects of standard library in Ruby.}
-  spec.homepage      = "https://github.com/indeep-xyz/pseudo-object"
+  spec.homepage      = "https://github.com/indeep-xyz/pseudoo"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec"
 
   spec.post_install_message = <<-MESSAGE
-!    The 'PseudoObject' gem has been deprecated and has been replaced by 'Pseudoo'.
+!    The 'Pseudoo' gem has been deprecated and has been replaced by 'Pseudoo'.
 !    See: https://rubygems.org/gems/pseudoo
 !    And: https://github.com/indeep-xyz/pseudoo
 MESSAGE

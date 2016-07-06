@@ -1,4 +1,4 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in pseudo_object.gemspec
+# Specify your gem's dependencies in pseudoo.gemspec
 gemspec

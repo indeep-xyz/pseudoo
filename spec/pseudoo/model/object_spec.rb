@@ -1,4 +1,4 @@
-require 'pseudo_object/model/object'
+require 'pseudoo/model/object'
 require 'spec_helper'
 
 require_examples %w!
@@ -11,7 +11,7 @@ object/class_methods/new
 object/instance_methods/overridden_comparison
 !
 
-describe ::PseudoObject::Object do
+describe ::Pseudoo::Object do
   describe 'class methods' do
     it_behaves_like 'in BasicObject, listing pseudo methods'
     it_behaves_like 'in Object, creating a new instance'
