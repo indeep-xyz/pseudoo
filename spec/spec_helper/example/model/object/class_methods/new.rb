@@ -10,7 +10,7 @@ RSpec.shared_examples \
       end
 
       it 'should have an object as ::Object' do
-        expect(subject.pseudo_object).to \
+        expect(subject.pseudoo_object).to \
           be_an_instance_of ::Object
       end
     end

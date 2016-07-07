@@ -1,5 +1,5 @@
 RSpec.shared_examples \
-    'in BasicObject, listing pseudo methods' do
+    'in BasicObject, listing pseudoo methods' do
   # - - - - - - - - - - - - - - - - - - - -
   # .pseudized_* series
 
@@ -15,43 +15,43 @@ RSpec.shared_examples \
   end
 
   # - - - - - - - - - - - - - - - - - - - -
-  # .pseudo_* series
+  # .pseudoo_* series
 
-  describe '.pseudo_instance_methods' do
-    subject { described_class.pseudo_instance_methods }
+  describe '.pseudoo_instance_methods' do
+    subject { described_class.pseudoo_instance_methods }
 
     it 'should return an array including valid instance methods' do
       is_expected.to \
-          include(:pseudo?, :pseudo_object, :pseudo_object=)
+          include(:pseudo?, :pseudoo_object, :pseudoo_object=)
       is_expected.not_to \
           include(:==)
     end
   end
 
-  describe '.pseudo_methods' do
-    subject { described_class.pseudo_methods }
+  describe '.pseudoo_methods' do
+    subject { described_class.pseudoo_methods }
 
     it 'should return an array including valid methods' do
       is_expected.to \
-          include(:pseudo_instance_methods)
+          include(:pseudoo_instance_methods)
       is_expected.not_to \
           include(:methods)
     end
   end
 
-  describe '.pseudo_private_instance_methods' do
-    subject { described_class.pseudo_private_instance_methods }
+  describe '.pseudoo_private_instance_methods' do
+    subject { described_class.pseudoo_private_instance_methods }
 
     it 'should return an array including valid private instance methods' do
       is_expected.to \
-          include(:validate_pseudo_class)
+          include(:validate_pseudoo_class)
       is_expected.not_to \
           include()
     end
   end
 
-  describe '.pseudo_protected_instance_methods' do
-    subject { described_class.pseudo_protected_instance_methods }
+  describe '.pseudoo_protected_instance_methods' do
+    subject { described_class.pseudoo_protected_instance_methods }
 
     it 'should return an array including valid protected instance methods' do
       is_expected.to \
@@ -61,8 +61,8 @@ RSpec.shared_examples \
     end
   end
 
-  describe '.pseudo_public_instance_methods' do
-    subject { described_class.pseudo_public_instance_methods }
+  describe '.pseudoo_public_instance_methods' do
+    subject { described_class.pseudoo_public_instance_methods }
 
     it 'should return an array including valid public instance methods' do
       is_expected.to \

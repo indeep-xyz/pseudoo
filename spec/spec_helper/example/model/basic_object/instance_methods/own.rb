@@ -16,59 +16,59 @@ RSpec.shared_examples \
     end
   end
 
-  describe '#pseudo_infection?' do
+  describe '#pseudoo_infection?' do
     subject { described_class.new(infection: bool) }
 
-    context 'when initialized no option for @pseudo_infection' do
+    context 'when initialized no option for @pseudoo_infection' do
       subject { described_class.new }
 
       it 'should return true' do
-        expect(subject.pseudo_infection?).to \
+        expect(subject.pseudoo_infection?).to \
             be_truthy
       end
     end
 
-    context 'when initialized @pseudo_infection to true' do
+    context 'when initialized @pseudoo_infection to true' do
       let(:bool) { true }
 
       it 'should return true' do
-        expect(subject.pseudo_infection?).to \
+        expect(subject.pseudoo_infection?).to \
             be_truthy
       end
     end
 
-    context 'when initialized @pseudo_infection to false' do
+    context 'when initialized @pseudoo_infection to false' do
       let(:bool) { false }
 
       it 'should return false' do
-        expect(subject.pseudo_infection?).to \
+        expect(subject.pseudoo_infection?).to \
             be_falsey
       end
     end
   end
 
-  describe '#pseudo_infection=' do
+  describe '#pseudoo_infection=' do
     subject { described_class.new(infection: bool) }
 
-    context 'when initialized @pseudo_infection to true' do
+    context 'when initialized @pseudoo_infection to true' do
       let(:bool) { true }
 
-      context 'when passed false to #pseudo_infection=' do
+      context 'when passed false to #pseudoo_infection=' do
         it 'should have false' do
-          subject.pseudo_infection = false
-          expect(subject.pseudo_infection?).to \
+          subject.pseudoo_infection = false
+          expect(subject.pseudoo_infection?).to \
               be_falsey
         end
       end
     end
 
-    context 'when initialized false in pseudo_infection' do
+    context 'when initialized false in pseudoo_infection' do
       let(:bool) { false }
 
-      context 'when passed true to #pseudo_infection=' do
+      context 'when passed true to #pseudoo_infection=' do
         it 'should have true' do
-          subject.pseudo_infection = true
-          expect(subject.pseudo_infection?).to \
+          subject.pseudoo_infection = true
+          expect(subject.pseudoo_infection?).to \
               be_truthy
         end
       end

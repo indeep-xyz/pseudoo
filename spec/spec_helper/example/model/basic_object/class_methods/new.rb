@@ -10,7 +10,7 @@ RSpec.shared_examples \
       end
 
       it 'should have an object' do
-        expect(subject.pseudo_object).not_to \
+        expect(subject.pseudoo_object).not_to \
           be_nil
       end
     end

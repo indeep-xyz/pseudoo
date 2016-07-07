@@ -12,7 +12,7 @@ RSpec.shared_examples \
     end
 
     context 'when passed the class object mimicked by the receiver' do
-      let(:model_class) { described_class.pseudo_model }
+      let(:model_class) { described_class.pseudoo_model }
 
       it 'should return true' do
         expect(subject.kind_of?(model_class)).to \
@@ -39,7 +39,7 @@ RSpec.shared_examples \
     end
 
     context 'when passed the class object mimicked by the receiver' do
-      let(:model_class) { described_class.pseudo_model }
+      let(:model_class) { described_class.pseudoo_model }
 
       it 'should return true for the same value' do
         expect(subject.instance_of?(model_class)).to \

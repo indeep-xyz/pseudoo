@@ -1,26 +1,26 @@
-require_relative 'ext/definer/pseudo_method_list'
+require_relative 'ext/definer/pseudoo_method_list'
 
 module Pseudoo
   class BasicObject < ::BasicObject
     attr_reader \
-        :pseudo_object
+        :pseudoo_object
 
-    @@pseudo_substance = self
-    @@pseudo_model = ::BasicObject
+    @@pseudoo_substance = self
+    @@pseudoo_model = ::BasicObject
 
     class << self
       ModelExt::Definer::PseudoMethodList.define_methods(self)
 
       %w/
-      pseudo_substance
-      pseudo_model
+      pseudoo_substance
+      pseudoo_model
       /.each do |method_name|
         define_method(method_name) do
           class_variable_get(:"@@#{method_name}")
         end
       end
 
-      def pseudo_superclass
+      def pseudoo_superclass
         nil
       end
     end
@@ -32,7 +32,7 @@ module Pseudoo
       def initialize(object)
         message = '%s is not a kind of %s class' % [
             object.class,
-            @@pseudo_model.name]
+            @@pseudoo_model.name]
         super(message)
       end
     }
@@ -41,27 +41,27 @@ module Pseudoo
     # override - initialize
 
     def initialize(**options)
-      self.pseudo_object = @@pseudo_model.new
-      pseudo_initialize_options(**options)
+      self.pseudoo_object = @@pseudoo_model.new
+      pseudoo_initialize_options(**options)
     end
 
-    def pseudo_initialize_options(
+    def pseudoo_initialize_options(
         infection: true
         )
-      self.pseudo_infection = infection
+      self.pseudoo_infection = infection
     end
-    private :pseudo_initialize_options
+    private :pseudoo_initialize_options
 
     # - - - - - - - - - - - - - - -
     # pseudo original - set
 
-    def pseudo_infection=(bool)
-      @pseudo_infection = !!bool
+    def pseudoo_infection=(bool)
+      @pseudoo_infection = !!bool
     end
 
-    def pseudo_object=(other)
-      validate_pseudo_class(other)
-      @pseudo_object = other
+    def pseudoo_object=(other)
+      validate_pseudoo_class(other)
+      @pseudoo_object = other
     end
 
     # - - - - - - - - - - - - - - -
@@ -71,26 +71,26 @@ module Pseudoo
       true
     end
 
-    def pseudo_infection?
-      @pseudo_infection
+    def pseudoo_infection?
+      @pseudoo_infection
     end
 
     # - - - - - - - - - - - - - - -
     # pseudo original - private - validate
 
-    def validate_pseudo_class(object)
-      unless object.kind_of?(@@pseudo_model)
+    def validate_pseudoo_class(object)
+      unless object.kind_of?(@@pseudoo_model)
         fail TypeError.new(object)
       end
     end
-    private :validate_pseudo_class
+    private :validate_pseudoo_class
 
     # - - - - - - - - - - - - - - -
     # override - compare
 
     def ==(other)
       __id__ == other.__id__ \
-          || @pseudo_object.__id__ == other.__id__
+          || @pseudoo_object.__id__ == other.__id__
     end
 
     def !=(other)
@@ -101,14 +101,14 @@ module Pseudoo
     # override - convert
 
     def !
-      !@pseudo_object
+      !@pseudoo_object
     end
 
     # - - - - - - - - - - - - - - -
     # override - private - other
 
     def method_missing(method_name, *args, &block)
-      @pseudo_object.__send__(method_name, *args, &block)
+      @pseudoo_object.__send__(method_name, *args, &block)
     end
     private :method_missing
   end

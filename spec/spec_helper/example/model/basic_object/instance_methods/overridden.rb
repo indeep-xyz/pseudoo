@@ -13,7 +13,7 @@ RSpec.shared_examples \
 
     context 'when passed an object the receiver has' do
       it 'should return true' do
-        expect(subject == subject.pseudo_object).to \
+        expect(subject == subject.pseudoo_object).to \
             be_truthy
       end
     end
@@ -40,7 +40,7 @@ RSpec.shared_examples \
 
     context 'when passed an object the receiver has' do
       it 'should return false' do
-        expect(subject != subject.pseudo_object).to \
+        expect(subject != subject.pseudoo_object).to \
             be_falsey
       end
     end

@@ -15,7 +15,7 @@ module Pseudoo
           def define_methods(cls)
             instance = new(cls)
 
-            instance.define_pseudo_methods
+            instance.define_pseudoo_methods
             instance.define_pseudized_methods
           end
         end
@@ -24,9 +24,9 @@ module Pseudoo
           @class = cls
         end
 
-        def define_pseudo_methods
+        def define_pseudoo_methods
           METHOD_TYPES.each do |type|
-            define_pseudo_method(type)
+            define_pseudoo_method(type)
           end
         end
 
@@ -50,7 +50,7 @@ module Pseudoo
             define_method('#{pseudized_method_name(m)}') do
               collection = ancestors[0..-2].inject([]) do |result, cls|
                 result |= cls.#{m}
-              end & pseudo_model.#{m}
+              end & pseudoo_model.#{m}
 
               head_of_commons = collection.index(:instance_eval)
               collection[0...head_of_commons]
@@ -58,18 +58,18 @@ module Pseudoo
           EOT
         end
 
-        # Define the class method of "pseudo_*" series
+        # Define the class method of "pseudoo_*" series
         #
         # It returns an array including the names of methods
         # defined in Pseudoo.
         #
         # @m [String] method name of the method to list methods
-        def define_pseudo_method(m)
+        def define_pseudoo_method(m)
           @class.class_eval <<-EOT
-            define_method('#{pseudo_method_name(m)}') do
+            define_method('#{pseudoo_method_name(m)}') do
               ancestors[0..-2].inject([]) do |result, cls|
                 result |= cls.#{m}
-              end - pseudo_model.#{m}
+              end - pseudoo_model.#{m}
             end
           EOT
         end
@@ -81,8 +81,8 @@ module Pseudoo
           'pseudized_%s' % method_name
         end
 
-        def pseudo_method_name(method_name)
-          'pseudo_%s' % method_name
+        def pseudoo_method_name(method_name)
+          'pseudoo_%s' % method_name
         end
       end
     end

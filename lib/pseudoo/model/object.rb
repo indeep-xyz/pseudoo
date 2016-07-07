@@ -2,8 +2,8 @@ require_relative 'basic_object'
 
 module Pseudoo
   class Object < BasicObject
-    @@pseudo_substance = self
-    @@pseudo_model = ::Object
+    @@pseudoo_substance = self
+    @@pseudoo_model = ::Object
 
     class << self
     end
@@ -11,29 +11,29 @@ module Pseudoo
     # - - - - - - - - - - - - - - -
     # pseudo original - compare
 
-    def pseudo_kind_of?(klass)
-      @@pseudo_substance.ancestors.include?(klass) \
-          || @@pseudo_model.ancestors.include?(klass)
+    def pseudoo_kind_of?(klass)
+      @@pseudoo_substance.ancestors.include?(klass) \
+          || @@pseudoo_model.ancestors.include?(klass)
     end
-    alias_method :pseudo_is_a?, :pseudo_kind_of?
+    alias_method :pseudoo_is_a?, :pseudoo_kind_of?
 
-    def pseudo_instance_of?(klass)
-      @@pseudo_substance == klass \
-          || @@pseudo_model == klass
+    def pseudoo_instance_of?(klass)
+      @@pseudoo_substance == klass \
+          || @@pseudoo_model == klass
     end
 
     # - - - - - - - - - - - - - - -
     # override - compare
 
     def kind_of?(klass)
-      pseudo_kind_of?(klass) \
-          || @pseudo_object.__send__(:kind_of?, *[klass])
+      pseudoo_kind_of?(klass) \
+          || @pseudoo_object.__send__(:kind_of?, *[klass])
     end
     alias_method :is_a?, :kind_of?
 
     def instance_of?(klass)
-      pseudo_instance_of?(klass) \
-          || @pseudo_object.__send__(:instance_of?, *[klass])
+      pseudoo_instance_of?(klass) \
+          || @pseudoo_object.__send__(:instance_of?, *[klass])
     end
     alias_method :===, :instance_of?
 
@@ -41,7 +41,7 @@ module Pseudoo
     # override - get
 
     def class
-      @@pseudo_model
+      @@pseudoo_model
     end
   end
 end

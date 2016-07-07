@@ -11,7 +11,7 @@ RSpec.shared_examples \
       Regexp.new(pattern)
     }
 
-    it 'should raise NoMethodError in @pseudo_object' do
+    it 'should raise NoMethodError in @pseudoo_object' do
       expect { subject.__send__(method_name) }.to \
           raise_error(::NoMethodError, regexp)
     end
