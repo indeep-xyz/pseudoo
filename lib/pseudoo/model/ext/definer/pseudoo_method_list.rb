@@ -16,7 +16,7 @@ module Pseudoo
             instance = new(cls)
 
             instance.define_pseudoo_methods
-            instance.define_pseudized_methods
+            instance.define_pseudooized_methods
           end
         end
 
@@ -30,8 +30,8 @@ module Pseudoo
           end
         end
 
-        def define_pseudized_methods
-          define_pseudized_method('instance_methods')
+        def define_pseudooized_methods
+          define_pseudooized_method('instance_methods')
         end
 
         private
@@ -39,15 +39,15 @@ module Pseudoo
         # - - - - - - - - - - - - - - - -
         # Define
 
-        # Define the class method of "pseudized_*" series
+        # Define the class method of "pseudooized_*" series
         #
         # It returns an array including the names of methods
         # overriding the model's.
         #
         # @m [String] method name of the method to list methods
-        def define_pseudized_method(m)
+        def define_pseudooized_method(m)
           @class.class_eval <<-EOT
-            define_method('#{pseudized_method_name(m)}') do
+            define_method('#{pseudooized_method_name(m)}') do
               collection = ancestors[0..-2].inject([]) do |result, cls|
                 result |= cls.#{m}
               end & pseudoo_model.#{m}
@@ -77,8 +77,8 @@ module Pseudoo
         # - - - - - - - - - - - - - - - -
         # Parts
 
-        def pseudized_method_name(method_name)
-          'pseudized_%s' % method_name
+        def pseudooized_method_name(method_name)
+          'pseudooized_%s' % method_name
         end
 
         def pseudoo_method_name(method_name)

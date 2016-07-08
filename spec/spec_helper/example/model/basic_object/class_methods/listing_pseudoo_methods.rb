@@ -1,10 +1,10 @@
 RSpec.shared_examples \
     'in BasicObject, listing pseudoo methods' do
   # - - - - - - - - - - - - - - - - - - - -
-  # .pseudized_* series
+  # .pseudooized_* series
 
-  describe '.pseudized_instance_methods' do
-    subject { described_class.pseudized_instance_methods }
+  describe '.pseudooized_instance_methods' do
+    subject { described_class.pseudooized_instance_methods }
 
     it 'should return an array including instance methods overridden' do
       is_expected.to \
