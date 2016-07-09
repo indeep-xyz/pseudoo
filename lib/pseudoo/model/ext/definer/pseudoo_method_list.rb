@@ -1,7 +1,7 @@
 module Pseudoo
   module ModelExt
     module Definer
-      class PseudoMethodList
+      class PseudooMethodList
 
         METHOD_TYPES = %w/
         instance_methods

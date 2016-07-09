@@ -9,7 +9,7 @@ module Pseudoo
     @@pseudoo_model = ::BasicObject
 
     class << self
-      ModelExt::Definer::PseudoMethodList.define_methods(self)
+      ModelExt::Definer::PseudooMethodList.define_methods(self)
 
       %w/
       pseudoo_substance
