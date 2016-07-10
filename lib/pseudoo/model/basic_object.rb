@@ -53,7 +53,7 @@ module Pseudoo
     private :pseudoo_initialize_options
 
     # - - - - - - - - - - - - - - -
-    # pseudo original - set
+    # in Pseudoo - set
 
     def pseudoo_infection=(bool)
       @pseudoo_infection = !!bool
@@ -65,7 +65,7 @@ module Pseudoo
     end
 
     # - - - - - - - - - - - - - - -
-    # pseudo original - get - bool
+    # in Pseudoo - get - bool
 
     def pseudo?
       true
@@ -76,7 +76,7 @@ module Pseudoo
     end
 
     # - - - - - - - - - - - - - - -
-    # pseudo original - private - validate
+    # in Pseudoo - private - validate
 
     def validate_pseudoo_class(object)
       unless object.kind_of?(@@pseudoo_model)

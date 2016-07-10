@@ -9,7 +9,7 @@ module Pseudoo
     end
 
     # - - - - - - - - - - - - - - -
-    # pseudo original - compare
+    # in Pseudoo - compare
 
     def pseudoo_kind_of?(klass)
       @@pseudoo_substance.ancestors.include?(klass) \
